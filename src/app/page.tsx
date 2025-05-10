@@ -40,12 +40,12 @@ const Home: FC = () => {
   };
 
   return (
-    <main style={{ margin: '24px' }}>
-      <h1>Solace Advocates</h1>
-      <br />
-      <br />
-      <div>
-        <p>Search</p>
+    <main className="m-w-dvw">
+      <div className="p-6 bg-blue-500">
+        <h1 className="text-2xl">Solace Advocates</h1>
+      </div>
+      <div className="m-6">
+        <h2 className="text-xl">Search</h2>
         <p>
           Searching for: <span id="search-term">{searchTerm}</span>
         </p>
@@ -54,37 +54,43 @@ const Home: FC = () => {
           onChange={handleInputChange}
           value={searchTerm}
         />
-        <button onClick={handleResetAdvocates}>Reset Search</button>
+        <button className="bg-blue-500 p-1 m-1" onClick={handleResetAdvocates}>
+          Reset Search
+        </button>
       </div>
-      <br />
-      <br />
-      <table>
-        <thead>
+      <table className="m-6 overflow-x-auto">
+        <thead className="border-2">
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>City</th>
-            <th>Degree</th>
-            <th>Specialties</th>
-            <th>Years of Experience</th>
-            <th>Phone Number</th>
+            <th className="p-2">First Name</th>
+            <th className="p-2">Last Name</th>
+            <th className="p-2">City</th>
+            <th className="p-2">Degree</th>
+            <th className="p-2">Specialties</th>
+            <th className="p-2">Years of Experience</th>
+            <th className="p-2">Phone Number</th>
           </tr>
         </thead>
         <tbody>
           {filteredAdvocates.map((advocate, i) => {
             return (
-              <tr key={`advocate-${i}`}>
-                <td>{advocate.firstName}</td>
-                <td>{advocate.lastName}</td>
-                <td>{advocate.city}</td>
-                <td>{advocate.degree}</td>
-                <td>
-                  {advocate.specialties.map((s, j) => (
-                    <div key={`specialty-${j}`}>{s}</div>
+              <tr
+                className="border-2 odd:bg-gray-50 even:bg-gray-100"
+                key={`advocate-${i}`}>
+                <td className="p-2">{advocate.firstName}</td>
+                <td className="p-2">{advocate.lastName}</td>
+                <td className="p-2">{advocate.city}</td>
+                <td className="p-2">{advocate.degree}</td>
+                <td className="flex flex-wrap max-w-md p-1">
+                  {advocate.specialties.map((specialty, j) => (
+                    <span
+                      className="truncate bg-blue-400 rounded-xl px-2 mt-1 mx-1"
+                      key={`specialty-${j}`}>
+                      {specialty}
+                    </span>
                   ))}
                 </td>
-                <td>{advocate.yearsOfExperience}</td>
-                <td>{advocate.phoneNumber}</td>
+                <td className="p-2">{advocate.yearsOfExperience}</td>
+                <td className="p-2">{advocate.phoneNumber}</td>
               </tr>
             );
           })}
