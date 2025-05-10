@@ -1,9 +1,9 @@
 'use client';
 
-import { ChangeEventHandler, useEffect, useState } from 'react';
+import { ChangeEventHandler, useEffect, useState, FC } from 'react';
 import Advocate from './types/advocate';
 
-export default function Home() {
+const Home: FC = () => {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -92,4 +92,6 @@ export default function Home() {
       </table>
     </main>
   );
-}
+};
+
+export default Home;
